@@ -5,54 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygunay <ygunay@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 15:02:27 by ygunay            #+#    #+#             */
-/*   Updated: 2022/09/29 15:02:28 by ygunay           ###   ########.fr       */
+/*   Created: 2022/09/28 14:52:41 by ygunay            #+#    #+#             */
+/*   Updated: 2022/09/29 14:05:03 by ygunay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <unistd.h>
 
-int check_repeat(char *str, char c ,int n)
+int check_repeat(char *str, char c, int n )
 {
 	int i;
 	
 	i = 0;
-
-	while (i < n)
+	while(i < n)
 	{
 		if(str[i] == c)
-			return(0);
+			return (0);
 		i++;
 	}
 	return (1);
+	
 }
 
-int main(int ac, char **av)
+int main()
 {
-	int i;
+	char s1[]="rien";
+	char s2[]="cette phrase ne cache rien";
+	
+    int i;
 	int j;
 
 	i = 0;
-
-	if(ac == 3)
+	while(s1[i])
 	{
-		while(av[1][i])
+		j=0;
+		while(s2[j])
 		{
-			j =0 ;
-			while (av[2][j])
+			if(s1[i]==s2[j] && check_repeat(s1,s1[i],i))
 			{
-				if(av[1][i]==av[2][j] && check_repeat(av[1],av[1][i],i))
-				{
-					write(1, &av[1][i], 1);
-					break;
-				}
-					
-				j++;
+				write(1,&s1[i],1);
+				break;
 			}
-			i++;
+			j++;
 		}
+		i++;
 	}
-	write(1,"\n",1);
+
+
+
 	return (0);
 }
